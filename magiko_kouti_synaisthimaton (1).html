@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Το μαγικό κουτί των συναισθημάτων</title>
+<style>
+:root{--ink:#27324a;--paper:#fffdf8;--purple:#7554a5;--yellow:#ffe6a7;--pink:#ffdce5;--blue:#dcecff;--green:#dff4e4}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#fff4d9,#f4eaff);font-family:Arial,sans-serif;color:var(--ink);line-height:1.55}
+main{max-width:920px;margin:auto;padding:20px}.hero,.panel{background:var(--paper);border-radius:24px;padding:24px;margin:16px 0;box-shadow:0 8px 24px #48305a12}
+.hero{text-align:center;border:3px solid #e8d9ff}.hero .emoji{font-size:4rem}.hero h1{font-size:clamp(1.8rem,5vw,3rem);margin:8px 0;color:#5b3d85}
+h2{color:#5b3d85;margin-top:0}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
+.emotion{border:0;border-radius:18px;padding:16px 10px;font-size:1rem;font-weight:bold;cursor:pointer;color:var(--ink);min-height:135px}
+.emotion span{display:block;font-size:2.6rem;margin-bottom:4px}.joy{background:#fff0bd}.sad{background:#dcecff}.anger{background:#ffd9d2}.fear{background:#e8ddff}.calm{background:#dff4e4}
+button{font:inherit;cursor:pointer}.primary,.option{border:0;border-radius:14px;padding:12px 16px;font-weight:bold;margin:5px 4px 5px 0}.primary{background:var(--purple);color:white}.option{background:#edf0f8;color:var(--ink);display:block;width:100%;text-align:left;margin:9px 0}.option:hover,.emotion:hover{filter:brightness(.97);outline:3px solid #c5b0e8}
+.feedback{min-height:2em;font-weight:bold;margin-top:10px}.story{background:#f4efff;border-radius:16px;padding:16px;margin:12px 0}.small{font-size:.95rem}.hidden{display:none}.progress{height:10px;background:#eee5f7;border-radius:99px;overflow:hidden}.bar{height:100%;width:0;background:#8e6cc1;transition:width .3s}
+footer{text-align:center;padding:16px;font-size:.9rem;color:#665b77}
+@media(max-width:500px){main{padding:12px}.hero,.panel{padding:18px}.emotion{min-height:115px}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+<div class="emoji" aria-hidden="true">🎁💖</div>
+<h1>Το μαγικό κουτί των συναισθημάτων</h1>
+<p>Ανακαλύπτουμε τα συναισθήματά μας, ακούμε τις ιστορίες και μαθαίνουμε τι μπορεί να μας βοηθήσει.</p>
+<button class="primary" onclick="document.getElementById('feelings').scrollIntoView({behavior:'smooth'})">Ας ξεκινήσουμε! ✨</button>
+</section>
+
+<section class="panel" id="feelings">
+<h2>1. Άνοιξε τις κάρτες των συναισθημάτων</h2>
+<p>Πάτησε μια κάρτα για να μάθεις περισσότερα. Όλα τα συναισθήματα είναι αποδεκτά!</p>
+<div class="cards">
+<button class="emotion joy" onclick="showFeeling('Χαρά','😄','Η χαρά μπορεί να εμφανιστεί όταν παίζουμε, γελάμε ή κάνουμε κάτι που μας αρέσει.')"><span>😄</span>Χαρά</button>
+<button class="emotion sad" onclick="showFeeling('Λύπη','😢','Η λύπη μπορεί να έρθει όταν κάτι μας λείπει ή κάτι δεν πάει όπως θέλαμε. Μπορούμε να ζητήσουμε μια αγκαλιά ή παρέα.')"><span>😢</span>Λύπη</button>
+<button class="emotion anger" onclick="showFeeling('Θυμός','😠','Ο θυμός μπορεί να εμφανιστεί όταν κάτι μας φαίνεται άδικο. Μπορούμε να σταματήσουμε, να αναπνεύσουμε και να μιλήσουμε χωρίς να χτυπάμε.')"><span>😠</span>Θυμός</button>
+<button class="emotion fear" onclick="showFeeling('Φόβος','😟','Ο φόβος μάς προειδοποιεί ότι κάτι μας φαίνεται δύσκολο ή άγνωστο. Μπορούμε να πλησιάσουμε έναν ενήλικα που εμπιστευόμαστε.')"><span>😟</span>Φόβος</button>
+<button class="emotion calm" onclick="showFeeling('Ηρεμία','😌','Η ηρεμία μπορεί να έρθει όταν ξεκουραζόμαστε, αναπνέουμε αργά ή νιώθουμε ασφάλεια.')"><span>😌</span>Ηρεμία</button>
+</div>
+<div class="story" id="feelingInfo" aria-live="polite">Διάλεξε μια κάρτα για να εμφανιστεί η περιγραφή της.</div>
+</section>
+
+<section class="panel">
+<h2>2. Μικρές ιστορίες</h2>
+<div class="story"><strong>🎨 Η ζωγραφιά της Μαρίας</strong><p>Η Μαρία τελείωσε μια ζωγραφιά και θέλει να τη δείξει στην τάξη. Χαμογελά και ανυπομονεί.</p><p><strong>Πώς μπορεί να νιώθει;</strong> Χαρά — μπορεί να νιώθει περήφανη για τη δουλειά της.</p></div>
+<div class="story"><strong>🧸 Το παιχνίδι του Νίκου</strong><p>Ο Νίκος ήθελε να παίξει με ένα παιχνίδι, αλλά τώρα το χρησιμοποιεί ένα άλλο παιδί. Ο Νίκος στενοχωρήθηκε.</p><p><strong>Τι μπορεί να κάνει;</strong> Να πει πώς νιώθει, να ζητήσει να παίξουν μαζί ή να περιμένει τη σειρά του με βοήθεια.</p></div>
+<div class="story"><strong>🌩️ Ο δυνατός ήχος</strong><p>Η Ελένη ακούει έναν ξαφνικό δυνατό ήχο και τρομάζει.</p><p><strong>Τι μπορεί να τη βοηθήσει;</strong> Να πάει κοντά σε έναν ενήλικα που εμπιστεύεται και να του πει ότι φοβήθηκε.</p></div>
+</section>
+
+<section class="panel" id="quiz">
+<h2>3. Ώρα για παιχνίδι ερωτήσεων!</h2>
+<p id="qCount">Ερώτηση 1 από 5</p><div class="progress"><div class="bar" id="bar"></div></div>
+<h3 id="question">Πώς μπορεί να νιώθει ένα παιδί όταν παίζει με τους φίλους του και περνά όμορφα;</h3>
+<div id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div>
+<button class="primary hidden" id="next" onclick="nextQuestion()">Επόμενη ερώτηση ➜</button>
+<div id="finish" class="hidden"><h3>🎉 Μπράβο που προσπάθησες!</h3><p>Κάθε συναίσθημα έχει τη θέση του. Μπορούμε να μιλάμε για όσα νιώθουμε και να ζητάμε βοήθεια.</p><button class="primary" onclick="restartQuiz()">Παίξε ξανά ↻</button></div>
+</section>
+
+<section class="panel">
+<h2>4. Τι μπορώ να κάνω όταν το συναίσθημα είναι πολύ δυνατό;</h2>
+<ul>
+<li>🌬️ Παίρνω αργές, ήρεμες αναπνοές.</li>
+<li>🗣️ Λέω με λόγια τι νιώθω.</li>
+<li>🧸 Κάνω ένα μικρό διάλειμμα σε ασφαλές μέρος.</li>
+<li>🤝 Ζητώ βοήθεια από έναν ενήλικα που εμπιστεύομαι.</li>
+<li>💗 Θυμάμαι ότι δεν χρειάζεται να νιώθουμε όλοι το ίδιο.</li>
+</ul>
+<p class="small">Δεν υπάρχουν «κακά» συναισθήματα. Μπορούμε να μάθουμε ασφαλείς τρόπους να τα εκφράζουμε.</p>
+</section>
+<footer>Δραστηριότητα για παιδιά 4–6 ετών • Μπορεί να γίνει μαζί με/με την καθοδήγηση του/της εκπαιδευτικού.</footer>
+</main>
+<script>
+function showFeeling(name,emoji,description){document.getElementById('feelingInfo').innerHTML='<strong>'+emoji+' '+name+'</strong><p>'+description+'</p>'}
+const questions=[
+{q:'Πώς μπορεί να νιώθει ένα παιδί όταν παίζει με τους φίλους του και περνά όμορφα;',a:['Χαρά 😄','Φόβο 😟','Θυμό 😠'],correct:0,why:'Η χαρά μπορεί να εμφανιστεί όταν περνάμε όμορφα με φίλους.'},
+{q:'Ένα παιδί στενοχωρήθηκε επειδή του έλειψε ο φίλος του. Τι μπορεί να νιώθει;',a:['Ηρεμία 😌','Λύπη 😢','Χαρά 😄'],correct:1,why:'Η λύπη μπορεί να εμφανιστεί όταν κάποιος μας λείπει.'},
+{q:'Όταν θυμώνω, ποια επιλογή είναι ασφαλής;',a:['Χτυπώ κάποιον','Πετάω τα παιχνίδια','Σταματώ, αναπνέω και μιλάω'],correct:2,why:'Η αναπνοή και τα λόγια μάς βοηθούν να εκφράσουμε τον θυμό με ασφάλεια.'},
+{q:'Αν κάτι με φοβίζει, τι μπορώ να κάνω;',a:['Ζητώ βοήθεια από έναν ενήλικα που εμπιστεύομαι','Κρατώ πάντα τον φόβο μου κρυφό','Σπρώχνω κάποιον'],correct:0,why:'Είναι σωστό να ζητάμε βοήθεια από έναν ενήλικα που εμπιστευόμαστε.'},
+{q:'Ποια δραστηριότητα μπορεί να με βοηθήσει να ηρεμήσω;',a:['Να φωνάζω πιο δυνατά','Να παίρνω αργές αναπνοές','Να χτυπώ το τραπέζι'],correct:1,why:'Οι αργές αναπνοές μπορούν να μας βοηθήσουν να ηρεμήσουμε.'}
+];
+let index=0,answered=false;
+function renderQuestion(){answered=false;document.getElementById('qCount').textContent='Ερώτηση '+(index+1)+' από '+questions.length;document.getElementById('bar').style.width=(index/questions.length*100)+'%';document.getElementById('question').textContent=questions[index].q;document.getElementById('feedback').textContent='';document.getElementById('next').classList.add('hidden');document.getElementById('finish').classList.add('hidden');const box=document.getElementById('answers');box.innerHTML='';questions[index].a.forEach((answer,i)=>{const b=document.createElement('button');b.className='option';b.textContent=answer;b.onclick=()=>checkAnswer(i);box.appendChild(b)})}
+function checkAnswer(choice){if(answered)return;answered=true;const q=questions[index];document.querySelectorAll('#answers button').forEach(b=>b.disabled=true);const f=document.getElementById('feedback');if(choice===q.correct){f.textContent='Μπράβο! 🌟 '+q.why}else{f.textContent='Καλή προσπάθεια! 💛 '+q.why}document.getElementById('next').classList.remove('hidden');}
+function nextQuestion(){index++;if(index>=questions.length){document.getElementById('question').textContent='';document.getElementById('answers').innerHTML='';document.getElementById('feedback').textContent='';document.getElementById('next').classList.add('hidden');document.getElementById('bar').style.width='100%';document.getElementById('qCount').textContent='Ολοκλήρωσες τις ερωτήσεις!';document.getElementById('finish').classList.remove('hidden')}else renderQuestion()}
+function restartQuiz(){index=0;renderQuestion()}
+renderQuestion();
+</script>
+</body>
+</html>
